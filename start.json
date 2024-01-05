@@ -1,0 +1,27 @@
+{
+"daemon": true,
+  "run": [
+    {
+      "method": "shell.run",
+      "params": {
+        "message": "npx flowise start &",
+        "on": [{ "event": "/Flowise Server is listening at 3000/", "done": true }]
+      }
+    },
+    {
+      "method": "self.set",
+      "params": {
+        "session.json": {
+          "url": "http://localhost:3000"
+        }
+      }
+    },
+    {
+      "method": "browser.open",
+      "params": {
+        "uri": "{{self.session.url}}",
+        "target": "_blank"
+      }
+    }
+  ]
+}
